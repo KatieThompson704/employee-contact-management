@@ -1,11 +1,19 @@
 const generateHTML = require("./utils/generateHTML");
-const generateCSS = require("./utils/generateCSS");
 
 // packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 
 // array of questions for user input
+const menuOptions = [
+  {
+    type: "list",
+    message: "Which type of team member would you like to add?",
+    choices: ["Engineer", "Intern", "Done adding team members."],
+    name: "menu",
+  },
+];
+
 const managerQuestions = [
   {
     type: "input",
@@ -26,12 +34,6 @@ const managerQuestions = [
     type: "input",
     message: "What is the team manager’s office number?",
     name: "managerOffice",
-  },
-  {
-    type: "list",
-    message: "Which type of team member would you like to add?",
-    choices: ["Engineer", "Intern", "Done adding team members."],
-    name: "memberType",
   },
 ];
 
@@ -56,12 +58,6 @@ const engineerQuestions = [
     message: "What is your engineer’s office number?",
     name: "engineerOffice",
   },
-  {
-    type: "list",
-    message: "Which type of team member would you like to add?",
-    choices: ["Engineer", "Intern", "Done adding team members."],
-    name: "memberType",
-  },
 ];
 
 const internQuestions = [
@@ -83,32 +79,39 @@ const internQuestions = [
   {
     type: "input",
     message: "What is your intern's school?",
-    name: "internOffice",
-  },
-  {
-    type: "list",
-    message: "Which type of team member would you like to add?",
-    choices: ["Engineer", "Intern", "Done adding team members."],
-    name: "memberType",
+    name: "internSchool",
   },
 ];
 
 function init() {
-  inquirer.prompt(managerQuestions).then((answers) => {
-    fs.writeFileSync("index.html", generateHTML(answers));
-    if ((answers.memberType = "Engineer")) {
-      inquirer.prompt(engineerQuestions).then((answers) => {
-        fs.writeFileSync("index.html", generateHTML(answers));
-      });
-    } else if ((answers.memberType = "Intern")) {
-      inquirer.prompt(internQuestions).then((answers) => {
-        fs.writeFileSync("index.html", generateHTML(answers));
-      });
-    } else {
-    }
-    generateCSS();
+  inquirer.prompt(managerQuestions).then((managerAnswers) => {
+    // fs.writeFileSync("index.html", generateHTML(managerAnswers));
+    initMenu();
   });
 }
 
-// Function call to initialize app
+function initMenu() {
+  inquirer.prompt(menuOptions).then((menuAnswer) => {
+    if (menuAnswer.menu === "Engineer") {
+      promptEngineer();
+    } else if (menuAnswer.menu === "Intern") {
+      promptIntern();
+    } else {
+      return;
+    }
+  });
+}
+
+function promptEngineer() {
+  inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
+    initMenu();
+  });
+}
+
+function promptIntern() {
+  inquirer.prompt(internQuestions).then((internAnswers) => {
+    initMenu();
+  });
+}
+
 init();
