@@ -1,11 +1,37 @@
-#title-bar {
-  background-color: peachpuff;
+body {
+  background-color: #fefbd8;
 }
 
-/* .my-card-top {
-  background-color: salmon;
-} */
+#title-bar {
+  background-color: #80ced6;
+}
 
-/* .whole-card {
+.my-card-top {
+  border-radius: 5px;
+  background-color: #618685;
+}
+
+.my-card-body {
+  padding: 10px;
+  border-style: ridge;
   border-radius: 10px;
-} */
+  border-color: grey;
+  color: white;
+  margin: 10px;
+  box-shadow: 3px 3px 6px #36486b;
+  background-color: #618685;
+}
+.my-card-bottom {
+  background-color: #d5f4e6;
+  border-radius: 5px;
+  color: black;
+}
+
+.my-list {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.my-row {
+  justify-content: center;
+}
