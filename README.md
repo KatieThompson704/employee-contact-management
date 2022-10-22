@@ -25,9 +25,9 @@ Packages needed for this application are inquirer (enter: " npm i inquirer@8.2.4
 
 Navigate to the command line in your integrated terminal and enter " node index ". Answer the questions with your manager, engineer, and intern employee details when prompted.
 
-Link to the deployed application: [insert link here]
+Link to the deployed application: https://katiethompson704.github.io/employee-contact-management/dist/index.html
 
-Please reference the following link for a Demo video of the application: [insert link here]
+Please reference the following link for a Demo video of the application:
 
 ### Test
 
