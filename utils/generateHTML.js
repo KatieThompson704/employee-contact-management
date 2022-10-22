@@ -1,5 +1,63 @@
 function buildTeam(team) {
   console.log(team);
+  console.log(team[0].constructor.name);
+  let managerCard = "";
+  let engineerCard = "";
+  let internCard = "";
+  team.forEach((member) => {
+    if (member.constructor.name === "Manager") {
+      managerCard = `<div class="card my-card-body" style="width: 18rem">
+      <div class="card-body my-card-top">
+        <h5 class="card-title"> ${member.name}</h5>
+        <p class="card-text">Manager</p>
+      </div>
+      <ul class="list-group list-group-flush my-list">
+        <li class="list-group-item my-card-bottom"><b>ID: </b>${member.id}</li>
+        <li class="list-group-item my-card-bottom">
+          <b>Email: </b>
+          <a href="mailto:${member.email}" class="card-link">${member.email}</a>
+        </li>
+        <li class="list-group-item my-card-bottom">
+          <b>Office: </b>${member.officeNumber}
+        </li>
+      </ul>
+    </div>`;
+    } else if (member.constructor.name === "Engineer") {
+      engineerCard = `<div class="card my-card-body" style="width: 18rem">
+      <div class="card-body my-card-top">
+        <h5 class="card-title"> ${member.name}</h5>
+        <p class="card-text">Engineer</p>
+      </div>
+      <ul class="list-group list-group-flush my-list">
+        <li class="list-group-item my-card-bottom"><b>ID: </b>${member.id}</li>
+        <li class="list-group-item my-card-bottom">
+          <b>Email: </b>
+          <a href="mailto:${member.email}" class="card-link">${member.email}</a>
+        </li>
+        <li class="list-group-item my-card-bottom">
+          <b>Github: </b><a href="https://github.com/${member.github}" class="card-link">${member.github}</a>
+        </li>
+      </ul>
+    </div>`;
+    } else if (member.constructor.name === "Intern") {
+      internCard = `<div class="card my-card-body" style="width: 18rem">
+      <div class="card-body my-card-top">
+        <h5 class="card-title"> ${member.name}</h5>
+        <p class="card-text">Intern</p>
+      </div>
+      <ul class="list-group list-group-flush my-list">
+        <li class="list-group-item my-card-bottom"><b>ID: </b>${member.id}</li>
+        <li class="list-group-item my-card-bottom">
+          <b>Email: </b>
+          <a href="mailto:${member.email}" class="card-link">${member.email}</a>
+        </li>
+        <li class="list-group-item my-card-bottom">
+          <b>School: </b>${member.school}
+        </li>
+      </ul>
+    </div>`;
+    }
+  });
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -30,56 +88,10 @@ function buildTeam(team) {
         </div>
       </div>
       <div class="row my-row">
-      <div class="card my-card-body" style="width: 18rem">
-        <div class="card-body my-card-top">
-          <h5 class="card-title"> ${team[0].name}</h5>
-          <p class="card-text">Manager</p>
-        </div>
-        <ul class="list-group list-group-flush my-list">
-          <li class="list-group-item my-card-bottom"><b>ID: </b>${team[0].id}</li>
-          <li class="list-group-item my-card-bottom">
-            <b>Email: </b>
-            <a href="mailto:${team[0].email}" class="card-link">${team[0].email}</a>
-          </li>
-          <li class="list-group-item my-card-bottom">
-            <b>Office: </b>${team[0].officeNumber}
-          </li>
-        </ul>
+        ${managerCard}
+        ${engineerCard}
+        ${internCard}
       </div>
-      <div class="card my-card-body" style="width: 18rem">
-      <div class="card-body my-card-top">
-        <h5 class="card-title"> ${team[1].name}</h5>
-        <p class="card-text">Engineer</p>
-      </div>
-      <ul class="list-group list-group-flush my-list">
-        <li class="list-group-item my-card-bottom"><b>ID: </b>${team[1].id}</li>
-        <li class="list-group-item my-card-bottom">
-          <b>Email: </b>
-          <a href="mailto:${team[1].email}" class="card-link">${team[1].email}</a>
-        </li>
-        <li class="list-group-item my-card-bottom">
-          <b>Github: </b><a href="https://github.com/${team[1].github}" class="card-link">${team[1].github}</a>
-        </li>
-      </ul>
-    
-    </div>
-      <div class="card my-card-body" style="width: 18rem">
-      <div class="card-body my-card-top">
-        <h5 class="card-title"> ${team[2].name}</h5>
-        <p class="card-text">Intern</p>
-      </div>
-      <ul class="list-group list-group-flush my-list">
-        <li class="list-group-item my-card-bottom"><b>ID: </b>${team[2].id}</li>
-        <li class="list-group-item my-card-bottom">
-          <b>Email: </b>
-          <a href="mailto:${team[2].email}" class="card-link">${team[2].email}</a>
-        </li>
-        <li class="list-group-item my-card-bottom">
-          <b>School: </b>${team[2].school}
-        </li>
-      </ul>
-    </div>
-    </div>
     </div>
   
       <script
