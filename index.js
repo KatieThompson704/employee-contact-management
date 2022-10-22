@@ -1,4 +1,11 @@
 const generateHTML = require("./utils/generateHTML");
+const path = require("path");
+
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+
+var team = [];
 
 // packages needed for this application
 const inquirer = require("inquirer");
@@ -55,8 +62,8 @@ const engineerQuestions = [
   },
   {
     type: "input",
-    message: "What is your engineer’s office number?",
-    name: "engineerOffice",
+    message: "What is your engineer’s github username?",
+    name: "engineerGithub",
   },
 ];
 
@@ -85,7 +92,13 @@ const internQuestions = [
 
 function init() {
   inquirer.prompt(managerQuestions).then((managerAnswers) => {
-    // fs.writeFileSync("index.html", generateHTML(managerAnswers));
+    const manager = new Manager(
+      managerAnswers.managerName,
+      managerAnswers.managerID,
+      managerAnswers.managerEmail,
+      managerAnswers.managerOffice
+    );
+    team.push(manager);
     initMenu();
   });
 }
@@ -97,19 +110,36 @@ function initMenu() {
     } else if (menuAnswer.menu === "Intern") {
       promptIntern();
     } else {
-      return;
+      fs.writeFileSync(
+        path.join(__dirname, "/dist/", "index.html"),
+        generateHTML(team)
+      );
     }
   });
 }
 
 function promptEngineer() {
   inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
+    const engineer = new Engineer(
+      engineerAnswers.engineerName,
+      engineerAnswers.engineerID,
+      engineerAnswers.engineerEmail,
+      engineerAnswers.engineerGithub
+    );
+    team.push(engineer);
     initMenu();
   });
 }
 
 function promptIntern() {
   inquirer.prompt(internQuestions).then((internAnswers) => {
+    const intern = new Intern(
+      internAnswers.internName,
+      internAnswers.internID,
+      internAnswers.internEmail,
+      internAnswers.internSchool
+    );
+    team.push(intern);
     initMenu();
   });
 }

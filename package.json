@@ -1,5 +1,27 @@
 {
+  "name": "employee-contact-management",
+  "version": "1.0.0",
+  "description": "This command line interface application accepts user input and displays a team roster based on user input.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatieThompson704/employee-contact-management.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatieThompson704/employee-contact-management/issues"
+  },
+  "homepage": "https://github.com/KatieThompson704/employee-contact-management#readme",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "jest": "^29.2.1"
   }
 }
