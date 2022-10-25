@@ -28,6 +28,7 @@ Navigate to the command line in your integrated terminal and enter " node index 
 Link to the deployed application: https://katiethompson704.github.io/employee-contact-management/dist/index.html
 
 Please reference the following link for a Demo video of the application:
+https://drive.google.com/file/d/1cOEYBPT46f7hk7iVRYy9Fnq3vgM7wJow/view
 
 ### Test
 
